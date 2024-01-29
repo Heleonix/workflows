@@ -7,7 +7,7 @@ on:
   workflow_call:
 
 jobs:
-  Publish-Release-Docs:
+  Publish-GitRelease-Docs:
     runs-on: 'windows-latest'
     steps:
       - name: Checkout
