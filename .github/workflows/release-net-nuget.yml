@@ -1,0 +1,42 @@
+name: "Release: .NET / NuGet"
+
+permissions:
+  contents: write
+
+on:
+  workflow_call:
+
+jobs:
+  Publish-Release-Docs:
+    runs-on: 'windows-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: HxBuild
+        run: dotnet tool install Heleonix.Build --version 7.0.0 -g
+      - name: Validate
+        run: hxbuild -t:Hx_NetValidate
+      - name: ChangeLog
+        run: hxbuild -t:Hx_ChangeLog_GitHubCommit
+        env:
+          Hx_ChangeLog_GitHubCommit_Token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: hxbuild -t:Hx_NetBuild
+      - name: Test
+        run: hxbuild -t:Hx_NetTest
+      - name: Publish
+        run: hxbuild -t:Hx_NetNugetPush
+        env:
+          Hx_NetNugetPush_SourceURL: ${{ vars.Hx_NugetPublish_SourceURL }}
+          Hx_NetNugetPush_APIKey: ${{ secrets.NUGET_API_KEY }}
+      - name: Release
+        run: hxbuild -t:Hx_Release_GitHub
+        env:
+          Hx_Release_GitHub_Token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docs
+        run: hxbuild -t:Hx_DocFX_Git
+        env:
+          Hx_DocFX_Git_BranchName: ${{ vars.Hx_DocFX_Git_BranchName }}
+          Hx_DocFX_Git_User: ${{ vars.Hx_DocFX_Git_User }}
+          Hx_DocFX_RepositoryUrl: ${{ vars.Hx_DocFX_RepositoryUrl }}
+          Hx_DocFX_Git_Token: ${{ secrets.GITHUB_TOKEN }}
