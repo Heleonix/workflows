@@ -26,4 +26,4 @@ jobs:
         run: dotnet msbuild ../hxb/Heleonix.Build.6.3.1/Main.hxbproj -p:Hx_In_Targets=Hx_OpenCover
         env:
             Hx_OpenCover_FilePathReplacement: "https://raw.githubusercontent.com/Heleonix/$1/master/src/"
-            Hx_OpenCover_FilePathRegExp: ".*\\([a-zA-Z.]+)\\src\\"
+            Hx_OpenCover_FilePathRegExp: ".*\\\\([a-zA-Z.]+)\\\\src\\\\"
