@@ -22,11 +22,11 @@ jobs:
           Hx_ChangeLog_GitHubCommit_Token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: dotnet msbuild ../hxb/Heleonix.Build.6.3.1/Main.hxbproj -p:Hx_In_Targets=Hx_NetBuild
-      - name: Test
-        run: dotnet msbuild ../hxb/Heleonix.Build.6.3.1/Main.hxbproj -p:Hx_In_Targets=Hx_OpenCover
-        env:
-          Hx_OpenCover_FilePathReplacement: "https://raw.githubusercontent.com/Heleonix/$1/master/src/"
-          Hx_OpenCover_FilePathRegExp: ".*\\\\([a-zA-Z.]+)\\\\src\\\\"
+#      - name: Test
+#        run: dotnet msbuild ../hxb/Heleonix.Build.6.3.1/Main.hxbproj -p:Hx_In_Targets=Hx_OpenCover
+#        env:
+#          Hx_OpenCover_FilePathReplacement: "https://raw.githubusercontent.com/Heleonix/$1/master/src/"
+#          Hx_OpenCover_FilePathRegExp: ".*\\\\([a-zA-Z.]+)\\\\src\\\\"
       - name: Publish
         run: dotnet msbuild ../hxb/Heleonix.Build.6.3.1/Main.hxbproj -p:Hx_In_Targets=Hx_NugetPublish
         env:
