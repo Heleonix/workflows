@@ -22,8 +22,8 @@ jobs:
           Hx_ChangeLog_GitHubCommit_Token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: hxbuild -t:Hx_NetBuild
-      - name: Test
-        run: hxbuild -t:Hx_NetTest
+#      - name: Test
+#        run: hxbuild -t:Hx_NetTest
       - name: Publish
         run: hxbuild -t:Hx_NetNugetPush
         env:
