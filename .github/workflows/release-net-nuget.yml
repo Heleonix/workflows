@@ -27,7 +27,7 @@ jobs:
       - name: Publish
         run: hxbuild -t:Hx_NetNugetPush
         env:
-          Hx_NetNugetPush_SourceURL: ${{ vars.Hx_NugetPublish_SourceURL }}
+          Hx_NetNugetPush_SourceURL: "https://www.nuget.org/api/v2/package"
           Hx_NetNugetPush_APIKey: ${{ secrets.NUGET_API_KEY }}
       - name: Release
         run: hxbuild -t:Hx_Release_GitHub
@@ -36,7 +36,7 @@ jobs:
       - name: Docs
         run: hxbuild -t:Hx_DocFX_Git
         env:
-          Hx_DocFX_Git_BranchName: ${{ vars.Hx_DocFX_Git_BranchName }}
-          Hx_DocFX_Git_User: ${{ vars.Hx_DocFX_Git_User }}
-          Hx_DocFX_RepositoryUrl: ${{ vars.Hx_DocFX_RepositoryUrl }}
-          Hx_DocFX_Git_Token: ${{ secrets.GITHUB_TOKEN }}
+          Hx_DocFX_Git_BranchName: "master"
+          Hx_DocFX_Git_User: "Heleonix.Build"
+          Hx_DocFX_RepositoryUrl: "https://github.com/Heleonix/documentation.git"
+          Hx_DocFX_Git_Token: ${{ secrets.HX_DOCS_API }}
