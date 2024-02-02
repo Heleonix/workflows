@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: HxBuild
-        run: dotnet tool install Heleonix.Build --version 7.0.0 -g
+        run: dotnet tool install Heleonix.Build -g
       - name: Validate
         run: hxbuild -t:Hx_NetValidate
       - name: ChangeLog
@@ -22,8 +22,8 @@ jobs:
           Hx_ChangeLog_GitHubCommit_Token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: hxbuild -t:Hx_NetBuild
-#      - name: Test
-#        run: hxbuild -t:Hx_NetTest
+      - name: Test
+        run: hxbuild -t:Hx_NetTest
       - name: Publish
         run: hxbuild -t:Hx_NetNugetPush
         env:
