@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: HxBuild
-        run: dotnet tool install Heleonix.Build --version 7.0.3 -g
+        run: dotnet tool install Heleonix.Build -g
       - name: Validate
         run: hxbuild -t:Hx_NetValidate
       - name: ChangeLog
