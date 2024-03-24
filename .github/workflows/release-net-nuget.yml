@@ -38,5 +38,5 @@ jobs:
         env:
           Hx_DocFX_Git_BranchName: "master"
           Hx_DocFX_Git_User: "Heleonix.Build"
-          Hx_DocFX_RepositoryUrl: "https://github.com/Heleonix/documentation.git"
+          Hx_DocFX_RepositoryUrl: "https://github.com/Heleonix/docs.git"
           Hx_DocFX_Git_Token: ${{ secrets.HX_DOCS_API }}
