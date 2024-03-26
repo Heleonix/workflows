@@ -8,7 +8,7 @@ on:
 
 jobs:
   Publish-GitRelease-Docs:
-    if: github.repository.owner == 'Heleonix'
+    if: github.repository_owner == 'Heleonix'
     runs-on: 'windows-latest'
     steps:
       - name: Checkout
